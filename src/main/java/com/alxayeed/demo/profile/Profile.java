@@ -2,46 +2,40 @@ package com.alxayeed.demo.profile;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table
 public class Profile {
-    @Id // marks this field as pk
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //strategy for pk generation
+    @Id
+    @SequenceGenerator(
+            name = "profile_sequence",
+            sequenceName = "profile_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "profile_sequence"
+    )
     private Long id;
     private String fullName;
     private String nickName;
     private LocalDate dob;
-    private Integer age;
     private String email;
+    @Transient
+    private Integer age;
 
     public Profile() {
 
     }
 
-    public Profile(Long id,
-                   String fullName,
-                   String nickName,
-                   LocalDate dob,
-                   Integer age,
-                   String email) {
-        this.id = id;
-        this.fullName = fullName;
-        this.nickName = nickName;
-        this.dob = dob;
-        this.age = age;
-        this.email = email;
-    }
-
     public Profile(String fullName,
                    String nickName,
                    LocalDate dob,
-                   Integer age,
                    String email) {
         this.fullName = fullName;
         this.nickName = nickName;
         this.dob = dob;
-        this.age = age;
         this.email = email;
     }
 
@@ -78,7 +72,8 @@ public class Profile {
     }
 
     public Integer getAge() {
-        return age;
+
+        return Period.between(dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {
