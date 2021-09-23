@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path="api/v1/profile")
@@ -29,11 +28,11 @@ public class ProfileController {
 //        return profileService.getProfile(id);
 //    }
 //
-//    @PostMapping(@RequestBody Profile profile)
-//    public Profile addProfile(){
-//        // adds a profile object
-//        return profileService.addProfile();
-//    }
+    @PostMapping()
+    public Profile addProfile(@RequestBody Profile profile){
+        // adds a profile object
+        return profileService.addProfile(profile);
+    }
 //
 //    @PutMapping
 //    public Profile updateProfile (){
