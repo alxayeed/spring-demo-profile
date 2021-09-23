@@ -3,7 +3,7 @@ package com.alxayeed.demo.profile;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-public class User {
+public class Profile {
     private Long id;
     private String fullName;
     private String nickName;
@@ -11,16 +11,16 @@ public class User {
     private Integer age;
     private String email;
 
-    public User() {
+    public Profile() {
 
     }
 
-    public User(Long id,
-                String fullName,
-                String nickName,
-                LocalDate dob,
-                Integer age,
-                String email) {
+    public Profile(Long id,
+                   String fullName,
+                   String nickName,
+                   LocalDate dob,
+                   Integer age,
+                   String email) {
         this.id = id;
         this.fullName = fullName;
         this.nickName = nickName;
@@ -29,11 +29,11 @@ public class User {
         this.email = email;
     }
 
-    public User(String fullName,
-                String nickName,
-                LocalDate dob,
-                Integer age,
-                String email) {
+    public Profile(String fullName,
+                   String nickName,
+                   LocalDate dob,
+                   Integer age,
+                   String email) {
         this.fullName = fullName;
         this.nickName = nickName;
         this.dob = dob;
