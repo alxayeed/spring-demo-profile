@@ -32,19 +32,19 @@ public class ProfileController {
         // adds a profile object
         return profileService.addProfile(profile);
     }
-//
+
 //    @PutMapping
 //    public Profile updateProfile (){
 //        // update profile object
 //        return profileService.updateProfile();
 //    }
-//
-//    @DeleteMapping
-//    public void deleteProfile(){
-//        // deletes a profile object
-//        profileService.deleteProfile();
-//    }
-//
+
+    @DeleteMapping(path = "{profileId}")
+    public void deleteProfile(@PathVariable("profileId") Long id){
+        // deletes a profile object
+        profileService.deleteProfile(id);
+    }
+
 
 
 }

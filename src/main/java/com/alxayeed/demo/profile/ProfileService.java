@@ -27,6 +27,17 @@ public class ProfileService {
         return profileRepository.findById(id);
     }
 
+    public void deleteProfile(Long id){
+        Boolean isExistProfile = profileRepository.existsById(id);
+        if (!isExistProfile){
+            throw new IllegalStateException("Profile with ID "+ id + " Does not exist");
+        }
+        profileRepository.deleteById(id);
+    }
+
+//    public Profile updateProfile() {
+//    }
+
 //    public Profile getProfile(Long id) {
 //        return profileRepository.findProfile(id);
 //    }
