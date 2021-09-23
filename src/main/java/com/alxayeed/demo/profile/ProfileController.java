@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path="api/v1/profile")
@@ -18,16 +19,14 @@ public class ProfileController {
 
     @GetMapping
     public List<Profile> getProfiles(){
-        //return list of students
         return profileService.getProfiles();
     }
-//
-//    @GetMapping(path = "{profileId}")
-//    public Profile getProfile(@PathVariable("profileId") Long id){
-//        // returns single user profile object
-//        return profileService.getProfile(id);
-//    }
-//
+
+    @GetMapping(path = "{profileId}")
+    public Optional<Profile> getProfile(@PathVariable("profileId") Long id){
+        return profileService.getProfile(id);
+    }
+
     @PostMapping()
     public Profile addProfile(@RequestBody Profile profile){
         // adds a profile object

@@ -23,6 +23,10 @@ public class ProfileService {
         return profileRepository.save(profile);
     }
 
+    public Optional<Profile> getProfile(Long id) {
+        return profileRepository.findById(id);
+    }
+
 //    public Profile getProfile(Long id) {
 //        return profileRepository.findProfile(id);
 //    }
