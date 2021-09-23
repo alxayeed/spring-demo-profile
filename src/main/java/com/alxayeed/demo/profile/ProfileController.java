@@ -3,6 +3,7 @@ package com.alxayeed.demo.profile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,11 +34,16 @@ public class ProfileController {
         return profileService.addProfile(profile);
     }
 
-//    @PutMapping
-//    public Profile updateProfile (){
-//        // update profile object
-//        return profileService.updateProfile();
-//    }
+    @PutMapping(path = "{profileId}")
+    public Profile updateProfile (   @PathVariable("profileId") Long profileId,
+                                  @RequestParam(required = false) LocalDate dob,
+                                  @RequestParam(required = false) String email,
+                                  @RequestParam(required = false) String fullName,
+                                  @RequestParam(required = false) String nickName
+                                  ){
+        // update profile object
+        return profileService.updateProfile(profileId, dob, email, fullName, nickName);
+    }
 
     @DeleteMapping(path = "{profileId}")
     public void deleteProfile(@PathVariable("profileId") Long id){
