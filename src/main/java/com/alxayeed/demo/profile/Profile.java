@@ -3,7 +3,11 @@ package com.alxayeed.demo.profile;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table
 public class Profile {
+    @Id // marks this field as pk
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //strategy for pk generation
     private Long id;
     private String fullName;
     private String nickName;
